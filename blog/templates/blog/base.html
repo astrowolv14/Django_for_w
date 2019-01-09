@@ -1,25 +1,53 @@
 {% load static %}
 <html>
-  <link rel="stylesheet" href="{% static 'css/blog.css' %}">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-  <link href="https://fonts.googleapis.com/css?family=Lobster&subset=latin,cyrillic" rel="stylesheet" type="text/css">
     <head>
-        <title>Блог</title>
+        <title>Мини-Блог</title>
+      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+      <link rel="stylesheet" href="{% static 'css/blog.css' %}">
     </head>
     <body>
-      <body>
-  <div class="page-header">
-      <h1><a href="/">Блог</a></h1>
-  </div>
-  <div class="content container">
-      <div class="row">
-          <div class="col-md-8">
-          {% block content %}
-          {% endblock %}
-          </div>
+      <div class="navbar-fixed">
+      <nav>
+        <div class="nav-wrapper">
+          <div class="container">
+          <div class="page-header">
+            <a href="#" class="brand-logo">Блог</a>
+            <div class="right hide-on-med-and-down">
+                {% if user.is_authenticated %}
+                <a href="{% url 'post_new' %}" > <i class="material-icons">add</i></a>
+                {% endif %}
+            </div>
+        </div>
       </div>
-  </div>
-</body>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+      </nav>
+    </div>
+      <div class="container" id="content">
+            {% block content %}
+            {% endblock %}
+        </div>
+        <footer class="page-footer">
+          <div class="container">
+            <div class="row">
+              <div class="col l6 s12">
+              <h5 class="white-text">Обратная связь</h5>
+              <h5 class="grey-text text-lighten-4">mussayevr007@gmail.com</h5>
+              <h5 class="grey-text text-lighten-4">+7(999)-470-1498</h5>
+            </div>
+            <div class="col l4 offset-12 s12">
+              <h5 class="white-text">Ссылки</h5>
+              <ul>
+                <h5><li><a href="https://vk.com/astroworld14" class="grey-text text-lighten-3">Вконтакте</a></li></h5>
+            <h5><li><a  href="https://www.instagram.com/astrowolv14/" class="grey-text text-lighten-3">Instagram</a></li></h5>
+              </ul>
+            </div>
+            </div>
+          </div>
+          <div class="footer-copyright">
+            <div class="container">
+              2019 Ramazan Mussayev
+            </div>
+          </div>
+        </footer>
     </body>
 </html>
